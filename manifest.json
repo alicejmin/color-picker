@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Eyedropper and Palette Generator",
+  "description": "A simple color picker extension",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/mesh.png"
+  },
+  "icons": {
+      "16": "icons/mesh.png",
+      "48": "icons/mesh.png",
+      "128": "icons/mesh.png"
+  }
+}

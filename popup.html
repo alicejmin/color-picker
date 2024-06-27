@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+    <script src="popup.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+  <body>
+      <div class="popup">
+          <div class="banner">
+            <div class="logo"><img src="icons/mesh.png" alt="Logo"></div>
+            <p class="title">Color Finder</p>
+            <button id="exit-button"><i class="fa-solid fa-xmark"></i></i></button>
+          </div>
+          <div class="picker">
+              <button id="color-button">Get Color</button>
+          </div>
+          <div class="toggle">
+            <button id="toggle-button"><i class="fa-solid fa-chevron-right"></i></button>
+            <p>Recents</p>
+          </div>
+          <div class="chosen-colors hide">
+              <header>
+                  <span class="clear-all">Clear All</span>
+              </header>
+              <div class="recents-grid"></div>
+          </div>
+      </div>
+  </body>
+</html>
