@@ -67,6 +67,34 @@ body{
     cursor: pointer;
 }
 
+/* Most Recent Color */
+.most-recent-color {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #f7f8fa ;
+  justify-content: center;
+}
+
+.most-recent-color.hide {
+  display: none;
+}
+
+.most-recent-color .rect {
+  height: 22px;
+  width: 22px;
+  border-radius: 5px;
+  margin-right: 8px;
+  outline: 2px solid #ccc;
+}
+
+.most-recent-color .value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 /* Recents */
 
 /* Recents Banner */

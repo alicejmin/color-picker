@@ -2,6 +2,8 @@ const colorButton = document.querySelector("#color-button");
 const colorList = document.querySelector(".recents");
 const clearAll = document.querySelector(".clear-all");
 const pickedColors= JSON.parse(localStorage.getItem("chosen-colors") || "[]");
+const mostRecentColorRect = document.getElementById("most-recent-color-rect");
+const mostRecentColorValue = document.getElementById("most-recent-color-value");
 const toggleSection = document.querySelector(".toggle");
 const toggleButton = document.querySelector("#toggle-button");
 const pickedColorsSection = document.querySelector(".chosen-colors");
@@ -70,6 +72,15 @@ const showColors = () => {
       colorElement.addEventListener("click", () => copyColor(color));
       recentsGrid.appendChild(colorElement);
     });
+
+    if (pickedColors.length > 0) {
+      const mostRecentColor = pickedColors[pickedColors.length - 1];
+      mostRecentColorRect.style.background = mostRecentColor;
+      mostRecentColorValue.textContent = mostRecentColor;
+      document.querySelector('.most-recent-color').classList.remove('hide');
+    } else {
+        document.querySelector('.most-recent-color').classList.add('hide');
+    }
 }
 
 showColors();
