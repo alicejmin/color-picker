@@ -95,6 +95,7 @@ body{
 }
 
 /* Recents */
+
 /* Recents Banner */
 .toggle{
   display: flex;
@@ -119,7 +120,6 @@ body{
 .toggle #toggle-button.rotate-0 {
   transform: rotate(0deg);
 }
-
 /* Recents Tab */
 .chosen-colors{
   margin: 0px 15px;
@@ -142,11 +142,10 @@ header{
 .clear-recent{
   cursor: pointer;
 }
-
 /* Recents Grid */
 .chosen-colors .recents-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns grid */
+  grid-template-columns: repeat(5, 1fr); 
   gap: 8px; 
   margin-bottom: 10px;
 }
@@ -228,7 +227,6 @@ header{
   opacity: 0;
   animation: fade-in-out 1s forwards;
 }
-
 @keyframes fade-in-out {
   0% {
       opacity: 0;
