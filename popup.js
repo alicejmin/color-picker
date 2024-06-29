@@ -1,3 +1,4 @@
+// DOM elements
 const clearAll = document.querySelector(".clear-all");
 const pickedColors = JSON.parse(localStorage.getItem("chosen-colors") || "[]");
 const mostRecent = document.querySelector('.most-recent-color');
@@ -12,9 +13,11 @@ const paletteSection = document.querySelector('.palette-toggle');
 const paletteButton = document.querySelector('#palette-toggle-button');
 const colorPalette = document.querySelector(".color-palette");
 
+/* 
+Generate color palettes based on the provided color 
+*/
 const generatePaletteFromColor = (color) => {
   const baseColor = tinycolor(color);
-  
   const palettes = {
     "Split Complementary": baseColor.splitcomplement(),
     "Triadic": baseColor.triad(),
@@ -25,6 +28,10 @@ const generatePaletteFromColor = (color) => {
   displayPalette(palettes);
 };
 
+/**
+ * Display the generated color palette in the UI
+ * @param {Object} palettes - Object containing palette types and their colors
+ */
 const displayPalette = (palettes) => {
   colorPalette.innerHTML = ''; // Clear previous palette
 
@@ -45,6 +52,11 @@ const displayPalette = (palettes) => {
   }
 };
 
+/**
+ * Copy a color value to the clipboard and show a copied message
+ * @param {string} colorValue - The color value to copy
+ * @param {HTMLElement} container - The container to display the copied message
+ */
 const copyColor = (colorValue, container) => {
   try{
     navigator.clipboard.writeText(colorValue);
@@ -62,15 +74,9 @@ const copyColor = (colorValue, container) => {
   }
 }
 
-const deleteColor = (color) => {
-    const colorIndex = pickedColors.indexOf(color);
-    if (colorIndex !== -1) {
-        pickedColors.splice(colorIndex, 1);
-        localStorage.setItem("chosen-colors", JSON.stringify(pickedColors));
-        showColors();
-    }
-}
-
+/**
+ * Show picked colors in the UI
+ */
 const showColors = () => {
     recentsGrid.innerHTML = ""; 
 
@@ -110,8 +116,12 @@ const showColors = () => {
     
 }
 
+// Initial display
 showColors();
 
+/**
+ * Activate the EyeDropper tool to pick a color from the screen
+ */
 const activateEyeDropper = async () =>{
     try{
         const eyeDropper = new EyeDropper();
@@ -129,17 +139,26 @@ const activateEyeDropper = async () =>{
     }
 }
 
+/**
+ * Clear all recent colors and update the UI
+ */
 const clearAllColors = () => {
     pickedColors.length=0;
     localStorage.setItem("chosen-colors",JSON.stringify(pickedColors));
     showColors();
 }
 
+/**
+ * Clear the most recent color and update the UI
+ */
 const clearRecent = () => {
   mostRecent.classList.add('hide');
   colorPalette.innerHTML = '';
 }
 
+/**
+ * Icon Animation -- Color Palette Section
+ */
 const toggleColorsSection = () => {
   pickedColorsSection.classList.toggle("hide");
   if (pickedColorsSection.classList.contains("hide")) {
@@ -151,6 +170,9 @@ const toggleColorsSection = () => {
   }
 }
 
+/**
+ * Icon Animation -- Color Palette Section
+ */
 const toggleColorPaletteSection = () => {
   colorPalette.classList.toggle("hide");
   if (colorPalette.classList.contains("hide")) {
@@ -162,14 +184,18 @@ const toggleColorPaletteSection = () => {
   }
 };
 
+/* Event listeners */
 
+// Clear All
 clearAll.addEventListener("click", clearAllColors);
+
+// Clear most recent color 
 document.querySelector(".clear-recent").addEventListener("click", clearRecent);
 
-// Color Picker
+// Activate EyeDropper
 document.querySelector("#color-button").addEventListener("click", activateEyeDropper);
 
-// Toggle Recents 
+// Toggle visibility of picked colors 
 toggleSection.addEventListener("click", toggleColorsSection);
 toggleSection.addEventListener('mouseover', () => {
   toggleSection.style.backgroundColor = '#e9e9e9';
@@ -180,9 +206,8 @@ toggleSection.addEventListener('mouseout', () => {
   toggleButton.style.backgroundColor = '';
 });
 
-// Toggle Color Palette
+// Toggle visibility of color palette 
 paletteSection.addEventListener("click", toggleColorPaletteSection);
-
 paletteSection.addEventListener('mouseover', () => {
   paletteSection.style.backgroundColor = '#e9e9e9';
   paletteButton.style.backgroundColor = '#e9e9e9';
@@ -192,6 +217,7 @@ paletteSection.addEventListener('mouseout', () => {
   paletteButton.style.backgroundColor = '';
 });
 
+// Close window
 exitButton.addEventListener('click', () => {
   window.close();
 });
