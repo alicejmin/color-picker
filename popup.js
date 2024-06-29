@@ -137,6 +137,7 @@ const clearAllColors = () => {
 
 const clearRecent = () => {
   mostRecent.classList.add('hide');
+  colorPalette.innerHTML = '';
 }
 
 const toggleColorsSection = () => {
