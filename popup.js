@@ -1,5 +1,6 @@
 const clearAll = document.querySelector(".clear-all");
 const pickedColors = JSON.parse(localStorage.getItem("chosen-colors") || "[]");
+const mostRecent = document.querySelector('.most-recent-color');
 const mostRecentColorRect = document.getElementById("most-recent-color-rect");
 const mostRecentColorValue = document.getElementById("most-recent-color-value");
 const toggleSection = document.querySelector(".toggle");
@@ -93,17 +94,20 @@ const showColors = () => {
     });
 
     if (pickedColors.length > 0) {
+      
       const mostRecentColor = pickedColors[pickedColors.length - 1];
       mostRecentColorRect.style.background = mostRecentColor;
       mostRecentColorValue.textContent = mostRecentColor;
-      document.querySelector('.most-recent-color').classList.remove('hide');
+      mostRecent.classList.remove('hide');
 
       generatePaletteFromColor(mostRecentColor);
+      mostRecentColorRect.addEventListener("click", () => copyColor(mostRecentColor, mostRecentColorRect));
+      mostRecentColorValue.addEventListener("click", () => copyColor(mostRecentColor, mostRecentColorValue));  
     } else {
-        document.querySelector('.most-recent-color').classList.add('hide');
+        mostRecent.classList.add('hide');
         colorPalette.innerHTML = '';
-        // colorPalette.classList.add("hide");
     }
+    
 }
 
 showColors();
@@ -125,10 +129,14 @@ const activateEyeDropper = async () =>{
     }
 }
 
-const clearAllColors = () =>{
+const clearAllColors = () => {
     pickedColors.length=0;
     localStorage.setItem("chosen-colors",JSON.stringify(pickedColors));
     showColors();
+}
+
+const clearRecent = () => {
+  mostRecent.classList.add('hide');
 }
 
 const toggleColorsSection = () => {
@@ -153,7 +161,9 @@ const toggleColorPaletteSection = () => {
   }
 };
 
+
 clearAll.addEventListener("click", clearAllColors);
+document.querySelector(".clear-recent").addEventListener("click", clearRecent);
 
 // Color Picker
 document.querySelector("#color-button").addEventListener("click", activateEyeDropper);

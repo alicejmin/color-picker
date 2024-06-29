@@ -12,10 +12,10 @@ body{
 }
 .popup {
     width: 300px;
+    background-color: #f7f8fa;
 }
-.popup :where(.color){
-    display: flex;
-    align-items: center;
+.popup :where(.banner){
+    background-color: white;
 }
 
 /* Top Banner */
@@ -25,10 +25,11 @@ body{
     padding: 16px 0px;
     justify-content: left;
     height: 50px;
+    border-bottom: solid #d6d6d6 1px;
 }
 .banner #exit-button{
-    background-color: white;
     border: none;
+    background-color: white;
     color: #3e3e3e;
     padding: 16px 10px;
     margin-left: 40px;
@@ -52,21 +53,20 @@ body{
 .popup .picker{
     display: flex;
     align-items: center;
-    background-color: #f7f8fa ;
     justify-content: center;
     height: 90px;
 }
 .picker #color-button{
-    color:#3e3e3e;
-    padding: 15px 30px;
-    outline: none;
-    border: solid #999999 1px;
-    background: #ffffff;
-    border-radius: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  color:#3e3e3e;
+  padding: 15px 30px;
+  outline: none;
+  border: solid #999999 1px;
+  background: #ffffff;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Most Recent Color */
@@ -74,8 +74,7 @@ body{
   display: flex;
   align-items: center;
   padding-bottom: 20px;
-  background-color: #f7f8fa ;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .most-recent-color.hide {
@@ -99,21 +98,21 @@ body{
 /* Recents */
 /* Recents Banner */
 .toggle{
-    display: flex;
-    align-items: center;
-    padding: 15px 0px;
-    justify-content: left;
-    height: 35px;
+  display: flex;
+  align-items: center;
+  padding: 15px 0px;
+  justify-content: left;
+  height: 35px;
 }
 .toggle #toggle-button{
-    background-color: white;
-    border: none;
-    color: #3e3e3e;
-    margin-left: 16px;
-    margin-right: 10px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+  background-color: #f7f8fa;
+  border: none;
+  color: #3e3e3e;
+  margin-left: 16px;
+  margin-right: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
 }
 .toggle #toggle-button.rotate-90 {
   transform: rotate(90deg);
@@ -124,20 +123,25 @@ body{
 
 /* Recents Tab */
 .chosen-colors{
-    margin: 0px 13px;
+  margin: 0px 13px;
+  background-color: #f7f8fa;
+    
 }
 .chosen-colors.hide{
-    cursor: pointer;
-    display: none;
+  cursor: pointer;
+  display: none;
 }
 header{
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    margin-bottom: 10px;  
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-bottom: 10px;  
 }
 .clear-all{
     cursor: pointer;
+}
+.clear-recent{
+  cursor: pointer;
 }
 
 /* Recents Grid */
@@ -178,14 +182,14 @@ header{
   height: 35px;
 }
 .palette-toggle #palette-toggle-button{
-  background-color: white;
+  background-color: #f7f8fa;
   border: none;
   color: #3e3e3e;
   margin-left: 16px;
   margin-right: 10px;
   font-size: 12px;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.15s ease-in-out;
 }
 .palette-toggle #palette-toggle-button.rotate-90 {
   transform: rotate(90deg);
