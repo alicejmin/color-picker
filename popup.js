@@ -1,7 +1,5 @@
-const colorButton = document.querySelector("#color-button");
-const colorList = document.querySelector(".recents");
 const clearAll = document.querySelector(".clear-all");
-const pickedColors= JSON.parse(localStorage.getItem("chosen-colors") || "[]");
+const pickedColors = JSON.parse(localStorage.getItem("chosen-colors") || "[]");
 const mostRecentColorRect = document.getElementById("most-recent-color-rect");
 const mostRecentColorValue = document.getElementById("most-recent-color-value");
 const toggleSection = document.querySelector(".toggle");
@@ -9,14 +7,51 @@ const toggleButton = document.querySelector("#toggle-button");
 const pickedColorsSection = document.querySelector(".chosen-colors");
 const recentsGrid = document.querySelector(".recents-grid");
 const exitButton = document.getElementById('exit-button')
+const paletteSection = document.querySelector('.palette-toggle');
+const paletteButton = document.querySelector('#palette-toggle-button');
+const colorPalette = document.querySelector(".color-palette");
 
-const copyColor = (colorValue) => {
+const generatePaletteFromColor = (color) => {
+  const baseColor = tinycolor(color);
+  
+  const palettes = {
+    "Split Complementary": baseColor.splitcomplement(),
+    "Triadic": baseColor.triad(),
+    "Tetradic": baseColor.tetrad(),
+    "Monochromatic": baseColor.monochromatic(),
+  };
+
+  displayPalette(palettes);
+};
+
+const displayPalette = (palettes) => {
+  colorPalette.innerHTML = ''; // Clear previous palette
+
+  for (const [paletteName, colors] of Object.entries(palettes)) {
+      const paletteContainer = document.createElement('div');
+      paletteContainer.classList.add('palette-container');
+
+      colors.forEach(color => {
+          const colorBox = document.createElement('div');
+          colorBox.style.backgroundColor = tinycolor(color).toHexString();
+          const colorString = tinycolor(color).toHexString();
+          colorBox.addEventListener("click", () => copyColor(colorString, colorBox));
+          colorBox.classList.add('palette-color');
+          paletteContainer.appendChild(colorBox);
+      });
+
+      colorPalette.appendChild(paletteContainer);
+  }
+};
+
+const copyColor = (colorValue, container) => {
   try{
     navigator.clipboard.writeText(colorValue);
     const textElement = document.createElement("span");
-    textElement.innerText = "Copied";
-    textElement.classList.add("slide-out");
+    textElement.innerText = "Copied!";
+    textElement.classList.add("copied-message");
     recentsGrid.appendChild(textElement);
+    container.appendChild(textElement);
 
     setTimeout(() => {
         recentsGrid.removeChild(textElement);
@@ -24,22 +59,6 @@ const copyColor = (colorValue) => {
   } catch{
       console.error('Could not copy text: ');
   }
-    // const textElement = document.createElement("span");
-
-    // navigator.clipboard.writeText(colorValue);
-    // textElement.innerText = "Copied";
-    // textElement.classList.add("slide-out");
-    // recentsGrid.appendChild(textElement);
-    
-    // const textElement = e.querySelector(".value");
-    // navigator.clipboard.writeText(colorValue);
-    // textElement.innerText = "copied";
-    // textElement.classList.add("slide-out");
-
-    // setTimeout(() => {
-    //     textElement.innerText = colorValue;
-    //     textElement.classList.remove("slide-out");
-    // }, 1000);
 }
 
 const deleteColor = (color) => {
@@ -52,7 +71,7 @@ const deleteColor = (color) => {
 }
 
 const showColors = () => {
-    recentsGrid.innerHTML = ""; // Clear the grid first
+    recentsGrid.innerHTML = ""; 
 
     pickedColors.forEach((color) => {
       const colorElement = document.createElement("div");
@@ -78,6 +97,8 @@ const showColors = () => {
       mostRecentColorRect.style.background = mostRecentColor;
       mostRecentColorValue.textContent = mostRecentColor;
       document.querySelector('.most-recent-color').classList.remove('hide');
+
+      generatePaletteFromColor(mostRecentColor);
     } else {
         document.querySelector('.most-recent-color').classList.add('hide');
     }
@@ -88,7 +109,6 @@ showColors();
 const activateEyeDropper = async () =>{
     try{
         const eyeDropper = new EyeDropper();
-        //sRGBHex A string representing the selected color, in hexadecimal sRGB format 
         const { sRGBHex } = await eyeDropper.open();
         navigator.clipboard.writeText(sRGBHex);
 
@@ -120,11 +140,22 @@ const toggleColorsSection = () => {
   }
 }
 
+const toggleColorPalette = () => {
+  colorPalette.classList.toggle("hide");
+  if (colorPalette.classList.contains("hide")) {
+    paletteButton.classList.remove("rotate-90");
+    paletteButton.classList.add("rotate-0");
+  } else {
+    paletteButton.classList.remove("rotate-0");
+    paletteButton.classList.add("rotate-90");
+  }
+};
 
 clearAll.addEventListener("click", clearAllColors);
-colorButton.addEventListener("click", activateEyeDropper);
-toggleSection.addEventListener("click", toggleColorsSection);
+document.querySelector("#color-button").addEventListener("click", activateEyeDropper);
 
+// Toggle Recents 
+toggleSection.addEventListener("click", toggleColorsSection);
 toggleSection.addEventListener('mouseover', () => {
   toggleSection.style.backgroundColor = '#e9e9e9';
   toggleButton.style.backgroundColor = '#e9e9e9';
@@ -132,6 +163,18 @@ toggleSection.addEventListener('mouseover', () => {
 toggleSection.addEventListener('mouseout', () => {
   toggleSection.style.backgroundColor = '';
   toggleButton.style.backgroundColor = '';
+});
+
+// Toggle Color Palette
+paletteSection.addEventListener("click", toggleColorPalette);
+
+paletteSection.addEventListener('mouseover', () => {
+  paletteSection.style.backgroundColor = '#e9e9e9';
+  paletteButton.style.backgroundColor = '#e9e9e9';
+});
+paletteSection.addEventListener('mouseout', () => {
+  paletteSection.style.backgroundColor = '';
+  paletteButton.style.backgroundColor = '';
 });
 
 exitButton.addEventListener('click', () => {

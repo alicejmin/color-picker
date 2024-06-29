@@ -44,35 +44,36 @@ body{
 .banner .logo img {
   height: 20px; 
   width: auto; 
-  padding: 0px 15px; 
+  margin-left: 15px;
+  margin-right: 8px;
 }
 
 /* Color Picker */
 .popup .picker{
     display: flex;
     align-items: center;
-    padding: 15px 0px;
     background-color: #f7f8fa ;
     justify-content: center;
-    height: 75px;
+    height: 90px;
 }
 .picker #color-button{
     color:#3e3e3e;
-    padding: 10px 20px;
+    padding: 15px 30px;
     outline: none;
     border: solid #999999 1px;
     background: #ffffff;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    border-radius: 30px;
+    font-size: 1rem;
     cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* Most Recent Color */
 .most-recent-color {
   display: flex;
   align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   background-color: #f7f8fa ;
   justify-content: center;
 }
@@ -96,7 +97,6 @@ body{
 }
 
 /* Recents */
-
 /* Recents Banner */
 .toggle{
     display: flex;
@@ -109,7 +109,6 @@ body{
     background-color: white;
     border: none;
     color: #3e3e3e;
-    /* padding: 0px 0px; */
     margin-left: 16px;
     margin-right: 10px;
     font-size: 12px;
@@ -123,8 +122,9 @@ body{
   transform: rotate(0deg);
 }
 
+/* Recents Tab */
 .chosen-colors{
-    margin: 0px 10px;
+    margin: 0px 13px;
 }
 .chosen-colors.hide{
     cursor: pointer;
@@ -145,7 +145,7 @@ body{
 .chosen-colors .recents-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 columns grid */
-  gap: 10px; /* Adjust the gap between grid items */
+  gap: 8px; 
   margin-bottom: 10px;
 }
 
@@ -170,8 +170,75 @@ body{
   text-align: center;
 }
 
-/* .border {
-  color: #5f6368;
-  margin-right: 15px;
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-} */
+/* Color Palette */
+.palette-toggle{
+  display: flex;
+  align-items: center;
+  padding: 15px 0px;
+  justify-content: left;
+  height: 35px;
+}
+.palette-toggle #palette-toggle-button{
+  background-color: white;
+  border: none;
+  color: #3e3e3e;
+  margin-left: 16px;
+  margin-right: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+.palette-toggle #palette-toggle-button.rotate-90 {
+  transform: rotate(90deg);
+}
+.palette-toggle #palette-toggle-button.rotate-0 {
+  transform: rotate(0deg);
+}
+.color-palette.hide {
+  cursor: pointer;
+  display: none;
+}
+.color-palette {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  cursor: pointer;
+  padding: 10px 10px;
+}
+
+.palette-color {
+  height: 22px;
+  width: 22px;
+  border-radius: 5px;
+  margin: 8px;
+  outline: 2px solid #ccc;
+  display: inline-block;
+  padding: 0px 0px; 
+}
+
+/* Copy Message */
+.copied-message {
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  animation: fade-in-out 1s forwards;
+}
+
+@keyframes fade-in-out {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}

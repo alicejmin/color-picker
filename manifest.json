@@ -1,15 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Eyedropper and Palette Generator",
-  "description": "A simple color picker extension",
+  "name": "Color Picker and Palette Generator",
+  "description": "Discover, copy, and organize colors from any webpage.",
   "version": "1.0",
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "icons/mesh.png"
+    "default_icon": "icons/logo.png"
   },
   "icons": {
-      "16": "icons/mesh.png",
-      "48": "icons/mesh.png",
-      "128": "icons/mesh.png"
+      "16": "icons/logo.png",
+      "48": "icons/logo.png",
+      "128": "icons/logo.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
   }
 }
