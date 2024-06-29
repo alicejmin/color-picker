@@ -8,9 +8,9 @@ Color Finder is a Chrome extension that helps users easily pick colors from any 
 ![Overview](images/overview3.png)
 
 ## Tech Stack
-- **HTML**: Markup language used for structuring the extension's interface.
-- **CSS**: Styling language used for designing the visual aspects of the extension.
-- **JavaScript**: Programming language used for implementing the extension's functionality.
+- **HTML**
+- **CSS**
+- **JavaScript**
 - **TinyColor**: JavaScript library used for color manipulation.
 - **ColorThief**: JavaScript library used for extracting color palettes from images.
 
