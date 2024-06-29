@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Color Picker and Palette Generator",
   "description": "Discover, copy, and organize colors from any webpage.",
-  "version": "1.0",
+  "version": "1.0.0",
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icons/logo.png"
