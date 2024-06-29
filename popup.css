@@ -130,14 +130,13 @@ body{
     cursor: pointer;
     display: none;
 }
-.chosen-colors header{
+header{
     display: flex;
     align-items: center;
     justify-content: right;
     margin-bottom: 10px;  
-    /* background-color: #5f6368; */
 }
-.chosen-colors .clear-all{
+.clear-all{
     cursor: pointer;
 }
 
@@ -205,7 +204,6 @@ body{
   cursor: pointer;
   padding: 10px 10px;
 }
-
 .palette-color {
   height: 22px;
   width: 22px;

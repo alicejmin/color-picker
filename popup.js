@@ -101,6 +101,8 @@ const showColors = () => {
       generatePaletteFromColor(mostRecentColor);
     } else {
         document.querySelector('.most-recent-color').classList.add('hide');
+        colorPalette.innerHTML = '';
+        // colorPalette.classList.add("hide");
     }
 }
 
@@ -140,7 +142,7 @@ const toggleColorsSection = () => {
   }
 }
 
-const toggleColorPalette = () => {
+const toggleColorPaletteSection = () => {
   colorPalette.classList.toggle("hide");
   if (colorPalette.classList.contains("hide")) {
     paletteButton.classList.remove("rotate-90");
@@ -152,6 +154,8 @@ const toggleColorPalette = () => {
 };
 
 clearAll.addEventListener("click", clearAllColors);
+
+// Color Picker
 document.querySelector("#color-button").addEventListener("click", activateEyeDropper);
 
 // Toggle Recents 
@@ -166,7 +170,7 @@ toggleSection.addEventListener('mouseout', () => {
 });
 
 // Toggle Color Palette
-paletteSection.addEventListener("click", toggleColorPalette);
+paletteSection.addEventListener("click", toggleColorPaletteSection);
 
 paletteSection.addEventListener('mouseover', () => {
   paletteSection.style.backgroundColor = '#e9e9e9';
