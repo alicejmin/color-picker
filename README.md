@@ -12,12 +12,12 @@ Color Finder is a Chrome extension that helps users easily pick colors from any 
 
 ## Roadmap
 ### 1.0 Release
-- [x] EyeDropper.
-- [x] Display recently picked colors.
-- [x] Generate color palettes from the most recent color.
-- [x] Managing colors and palettes.
-- [x] Copy-to-clipboard for picked colors and palettes.
-- [x] Ability to clear all picked colors.
+- [x] EyeDropper
+- [x] Recently picked colors
+- [x] Generate color palettes from the most recent color
+- [x] Manage colors and palettes
+- [x] Copy-to-clipboard for picked colors and palettes
+- [x] Clear all picked colors
 
 ## Author
 Alice Min [alice_min@brown.edu]
