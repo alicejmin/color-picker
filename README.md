@@ -3,6 +3,10 @@
 ## About
 Color Finder is a Chrome extension that helps users easily pick colors from any webpage and generate color palettes. It provides an intuitive interface for selecting colors, viewing recent selections, and generating color palettes. 
 
+![Overview](images/overview.png)
+![Features](images/overview2.png)
+![Overview](images/overview3.png)
+
 ## Tech Stack
 - **HTML**: Markup language used for structuring the extension's interface.
 - **CSS**: Styling language used for designing the visual aspects of the extension.
