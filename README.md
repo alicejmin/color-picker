@@ -23,8 +23,8 @@ Color Finder is a Chrome extension that helps users easily pick colors from any 
 - [x] Copy-to-clipboard for picked colors and palettes
 - [x] Clear all picked colors
 
-## Author
-Alice Min [alice_min@brown.edu]
-
 ## Add to Chrome
 https://chromewebstore.google.com/detail/nnjfeknjlolgchclckhjpfjeoibbajgi?hl=en&authuser=1
+
+## Author
+Alice Min [alice_min@brown.edu]
